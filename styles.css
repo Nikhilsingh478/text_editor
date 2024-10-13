@@ -1,0 +1,357 @@
+/* styles.css */
+
+/* Import Orbitron Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* CSS Variables for Light and Dark Themes */
+:root {
+    --background-color: #f5f5f5;
+    --toolbar-background: #ffffff;
+    --text-color: #333333;
+    --button-background: #007bff;
+    --button-color: #ffffff;
+    --button-hover-background: #0056b3;
+    --folder-file-background: #ffffff;
+    --border-color: #ddd;
+    --icon-color: #333333; /* Default icon color */
+    --icon-hover-color: #888888; /* Hover icon color */
+    --icon-active-color: #007bff; /* Active icon color */
+    --checkbox-size: 18px; /* Increased checkbox size */
+}
+
+body.dark-mode {
+    --background-color: #1e1e1e;
+    --toolbar-background: #2c2c2c;
+    --text-color: #f5f5f5;
+    --button-background: #007bff; /* Keep button color blue in both modes */
+    --button-color: #ffffff;
+    --button-hover-background: #0056b3;
+    --folder-file-background: #2c2c2c;
+    --border-color: #555555;
+    --icon-color: #ffffff; /* Icons white in dark mode */
+    --icon-hover-color: #cccccc; /* Hover icon color in dark mode */
+    --icon-active-color: #007bff; /* Active icon color remains blue */
+}
+
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--toolbar-background);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.file-manager {
+    display: flex;
+    padding: 1rem;
+    flex: 1;
+    overflow: hidden;
+}
+
+.folders, .files {
+    flex: 1;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.folders:last-child, .files:last-child {
+    margin-right: 0;
+}
+
+.folders h2, .files h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.folders ul, .files ul {
+    list-style-type: none;
+    padding: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.folders li, .files li {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.folders li:hover, .files li:hover {
+    background-color: var(--button-background);
+    color: var(--button-color);
+}
+
+.folders li.active, .files li.active {
+    background-color: var(--button-background);
+    color: var(--button-color);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--button-background);
+    color: var(--button-color);
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.btn i.icon {
+    margin-right: 0.5rem;
+    color: var(--icon-color);
+    transition: color 0.3s;
+}
+
+body.dark-mode .btn i.icon {
+    color: var(--icon-color);
+}
+
+.btn:hover {
+    background-color: var(--button-hover-background);
+}
+
+.toolbar-container {
+    background-color: var(--toolbar-background);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#toolbar .ql-toolbar.ql-snow {
+    border: none;
+    background: none;
+}
+
+#toolbar button, #toolbar select {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--icon-color);
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toolbar button.icon, #toolbar select {
+    color: var(--icon-color);
+}
+
+#toolbar button:hover, #toolbar select:hover {
+    color: var(--icon-hover-color);
+}
+
+#toolbar button.active .icon, #toolbar button.active.icon {
+    color: var(--icon-active-color);
+}
+
+#toolbar button:focus, #toolbar select:focus {
+    outline: none;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-switch label {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--icon-color);
+    transition: color 0.3s;
+}
+
+.toggle-switch input[type="checkbox"]:checked + label {
+    color: var(--icon-active-color);
+}
+
+#editor {
+    flex: 1;
+    background-color: var(--toolbar-background);
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-y: auto;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Customize Quill Editor */
+.ql-toolbar.ql-snow {
+    border: none;
+}
+
+.ql-container.ql-snow {
+    border: none;
+    box-shadow: none;
+}
+
+.ql-editor {
+    min-height: 200px;
+    color: var(--text-color);
+}
+
+body.dark-mode .ql-editor {
+    color: #f5f5f5;
+}
+
+/* Checkbox Styling */
+.ql-checkbox {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.ql-checkbox input[type="checkbox"] {
+    transform: scale(1.5); /* Increased checkbox size */
+    margin-right: 5px;
+}
+
+/* Icon Colors Based on Dark Mode and Active States */
+.icon {
+    font-size: 1.2rem; /* Uniform icon size */
+    color: var(--icon-color);
+    transition: color 0.3s;
+}
+
+body.dark-mode .icon {
+    color: var(--icon-color);
+}
+
+body.dark-mode .ql-editor {
+    color: #f5f5f5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header h1 {
+        order: 1;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+    }
+
+    .header button#back-btn {
+        order: 2;
+        align-self: flex-start;
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .header button#back-btn i.icon {
+        font-size: 1rem;
+    }
+
+    .file-manager {
+        flex-direction: column;
+    }
+
+    .folders, .files {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    #toolbar {
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+
+    #toolbar button, #toolbar select {
+        flex: 0 0 auto;
+        width: 40px;
+        height: 40px;
+    }
+
+    .toggle-switch {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .folders ul, .files ul {
+        max-height: 150px;
+    }
+
+    /* Ensure uniform icon sizes */
+    .icon {
+        font-size: 1.2rem;
+    }
+
+    /* Adjust editor padding for mobile */
+    #editor {
+        padding: 0.5rem;
+    }
+}
+
+/* Additional Enhancements for Better UI */
+button.ql-bold.active, 
+button.ql-italic.active, 
+button.ql-underline.active,
+button.ql-align.active {
+    color: var(--icon-active-color);
+}
+
+button.ql-bold.active .icon,
+button.ql-italic.active .icon,
+button.ql-underline.active .icon,
+button.ql-align.active .icon {
+    color: var(--icon-active-color);
+}

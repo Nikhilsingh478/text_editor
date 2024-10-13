@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor App - Folders & Files</title>
+    <!-- Orbitron Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Text Editor</h1>
+            <div class="toggle-switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <label for="dark-mode-toggle"><i class="fa fa-moon icon"></i></label>
+            </div>
+        </div>
+        <div class="file-manager">
+            <div class="folders">
+                <h2>Folders</h2>
+                <ul id="folder-list">
+                    <!-- Folders will be dynamically added here -->
+                </ul>
+                <button id="create-folder-btn" class="btn"><i class="fa fa-folder-plus icon"></i> Create Folder</button>
+            </div>
+            <div class="files">
+                <h2>Files</h2>
+                <ul id="file-list">
+                    <!-- Files will be dynamically added here -->
+                </ul>
+                <button id="create-file-btn" class="btn"><i class="fa fa-file-plus icon"></i> Create File</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome JS (Optional, for better performance if needed) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
