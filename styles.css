@@ -3,6 +3,9 @@
 /* Import Orbitron Font */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 /* CSS Variables for Light and Dark Themes */
 :root {
     --background-color: #f5f5f5;
@@ -223,6 +226,8 @@ body.dark-mode .btn i.icon {
     border-radius: 4px;
     overflow-y: auto;
     transition: background-color 0.3s, border-color 0.3s;
+    font-family: "Prompt", serif;
+    line-height: 1.6; /* Increase line height for better readability */
 }
 
 /* Customize Quill Editor */
