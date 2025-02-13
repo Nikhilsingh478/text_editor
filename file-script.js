@@ -82,9 +82,10 @@ function saveAsPDF() {
 function addCheckbox() {
     const range = quill.getSelection();
     if (range) {
-        quill.insertEmbed(range.index, 'checkbox', true, Quill.sources.USER);
-        quill.insertText(range.index + 1, ' ', Quill.sources.USER); // Insert space after checkbox
-        quill.setSelection(range.index + 2, Quill.sources.SILENT); // Move cursor after checkbox and space
+        const checkboxEmoji = '✅'; // Checkbox emoji
+        quill.insertText(range.index, checkboxEmoji, Quill.sources.USER); // Insert checkbox emoji
+        quill.insertText(range.index + checkboxEmoji.length, ' ', Quill.sources.USER); // Insert space after checkbox emoji
+        quill.setSelection(range.index + checkboxEmoji.length + 1, Quill.sources.SILENT); // Move cursor after checkbox emoji and space
     }
 }
 
