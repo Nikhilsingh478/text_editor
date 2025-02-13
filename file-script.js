@@ -92,7 +92,7 @@ function addCheckbox() {
 document.addEventListener('keydown', (event) => {
     if (event.ctrlKey) {
         switch (event.key) {
-            case 'r': // Checkbox - Ctrl + R
+            case 'q': // Checkbox - Ctrl + R
                 event.preventDefault();
                 addCheckbox();
                 break;
