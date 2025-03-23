@@ -13,6 +13,17 @@ const fileId = parseInt(urlParams.get('fileId'), 10);
 let files = JSON.parse(localStorage.getItem('files')) || [];
 let currentFile = files.find(file => file.id === fileId);
 
+// Prevent "File not found" alert when navigating back after deletion
+if (fileId && !currentFile && !window.sessionStorage.getItem('fileDeleted')) {
+    alert('File not found.');
+    window.location.href = 'index.html';
+}
+
+// Clear sessionStorage flag after redirecting or editing
+if (currentFile) {
+    window.sessionStorage.removeItem('fileDeleted');
+}
+
 // Initialize Quill Editor
 const quill = new Quill('#editor', {
     modules: {
@@ -89,10 +100,11 @@ function addCheckbox() {
     }
 }
 
+
 document.addEventListener('keydown', (event) => {
     if (event.ctrlKey) {
         switch (event.key) {
-            case 'q': // Checkbox - Ctrl + R
+            case 'r': // Checkbox - Ctrl + R
                 event.preventDefault();
                 addCheckbox();
                 break;
